@@ -1,0 +1,2 @@
+GroupId,GroupName,VpcId,Description,OwnerId,InboundRulesCount,OutboundRulesCount,Tags
+sg-09d1b30ec6d52e67d,default,vpc-0a84b397dc528d5a7,default VPC security group,006506275991,1,1,

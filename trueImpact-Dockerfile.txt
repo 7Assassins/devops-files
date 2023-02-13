@@ -1,0 +1,27 @@
+# Based on examples from:
+# https://github.com/awslabs/eb-py-flask-signup/blob/docker/Dockerfile
+# http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/samples/docker-singlecontainer-v1.zip
+# http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/samples/docker-python-v1.zip
+
+FROM python:3.6.9
+
+RUN pip install --upgrade pip setuptools
+
+RUN echo "PYTHON VERSION"
+RUN python --version
+
+ADD requirements.txt /src/requirements.txt
+RUN cd /src; pip install -r requirements.txt
+
+ADD . /src
+
+EXPOSE 8000
+
+WORKDIR /src
+
+RUN mkdir /ti_logs/
+RUN chmod +x ./ir_start.sh
+CMD ./ir_start.sh
+
+# Run it
+# CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--pythonpath", "/src", "--log-config", "logging.conf", "wsgi:app"]
