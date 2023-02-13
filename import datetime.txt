@@ -1,0 +1,66 @@
+import datetime
+import json
+
+def lambda_handler(event, context):
+    response = client.get_metric_data(
+    MetricDataQueries=[
+        {
+            'Id': 'Lambda-Metric',
+            'MetricStat': {
+                'Metric': {
+                    'Namespace': 'CWAgent',
+                    'MetricName': 'nvidia_smi_utilization_gpu',
+                    'Dimensions': [
+                        {
+                            'Instance name': 'Megaverse-Alpha',
+                            'InstanceId': 'i-023eec73dc77d2384'
+                        },
+                    ]
+                },
+                'Period': 60,
+                'Stat': 'string',
+                'Unit': 'Seconds'
+            # 'AccountId': '675494174068'
+        },
+      },    
+    ],
+    StartTime=datetime(2023, 6, 10:30),
+    EndTime=datetime(2023, 6, 10:35),
+)
+    
+    
+    
+import boto3
+import datetime
+
+def lambda_handler(event, context):
+    client = boto3.client('cloudwatch')
+    
+    response = client.get_metric_data(
+        MetricDataQueries=[
+            {
+                'Id': 'lambdametric',
+                'MetricStat': {
+                    'Metric': {
+                        'Namespace': 'CWAgent',
+                        'MetricName': 'nvidia_smi_utilization_gpu',
+                        'Dimensions': [
+                            {
+                                'Name': 'InstanceId',
+                                'Value': 'i-07a68ac4f74c339f4',
+                            },
+                        ]
+                    },
+                    'Period': 60,
+                    'Stat': 'Sum',
+                    'Unit': 'Percent'
+                }
+            },
+        ],
+        StartTime=datetime.datetime(2023, 1, 9, 7, 0),
+        EndTime=datetime.datetime(2023, 1, 9, 7, 10),
+    )
+    
+    
+    
+    
